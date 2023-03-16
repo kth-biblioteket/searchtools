@@ -2,7 +2,6 @@
   "name": "searchtools",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/search/",
   "dependencies": {
     "@meilisearch/instant-meilisearch": "^0.11.1",
     "@testing-library/jest-dom": "^5.16.5",
