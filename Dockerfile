@@ -1,7 +1,5 @@
 # Use the official Node.js image as the base image
-# FROM node:16.13.2 as build-stage
-
-FROM node:16.13.2-alpine  as build-stage
+FROM node:16.13.2 as build-stage
 
 # Set the working directory in the container where your app's code will be stored
 WORKDIR /app
