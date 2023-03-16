@@ -22,11 +22,11 @@ function App() {
     return (
       <div className="App">
         <Routes>
-          <Route path="/mrbs" element={<Home />} />
-          <Route path="mrbs/kthemployees" element={<Kthemployees />} />
-          <Route path="mrbs/hr" element={<Hr />} />
-          <Route path="mrbs/ugusers" element={<Ugusers />} />
-          <Route path="mrbs/openalex" element={<Openalex />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/kthemployees" element={<Kthemployees />} />
+          <Route path="/hr" element={<Hr />} />
+          <Route path="/ugusers" element={<Ugusers />} />
+          <Route path="/openalex" element={<Openalex />} />
         </Routes>
       </div>
     );

@@ -22,21 +22,21 @@ function NavBar() {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav variant="" activeKey="/mrbs">
+                    <Nav variant="" activeKey="/">
                         <Nav.Item>
-                            <Nav.Link as={NavLink} to="/mrbs">Home</Nav.Link>
+                            <Nav.Link as={NavLink} to="/">Home</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link as={NavLink} to="/mrbs/kthemployees">KTH Anställda(historik)</Nav.Link>
+                            <Nav.Link as={NavLink} to="/kthemployees">KTH Anställda(historik)</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link as={NavLink} to="/mrbs/hr">KTH HR</Nav.Link>
+                            <Nav.Link as={NavLink} to="/hr">KTH HR</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link as={NavLink} to="/mrbs/ugusers">KTH Användare(UG)</Nav.Link>
+                            <Nav.Link as={NavLink} to="/ugusers">KTH Användare(UG)</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link as={NavLink} to="/mrbs/openalex">Openalex</Nav.Link>
+                            <Nav.Link as={NavLink} to="/openalex">Openalex</Nav.Link>
                         </Nav.Item>
                     </Nav>
                     <Form className="d-flex">
