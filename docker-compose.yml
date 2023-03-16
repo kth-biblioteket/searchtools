@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+  searchtools:
+    container_name: searchtools
+    image: ghcr.io/kth-biblioteket/kthb-meili-reactjs:main
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.searchtools.rule=Host(`search.sites.lib.kth.se`)"
+      - "traefik.http.routers.searchtools.entrypoints=websecure"
+      - "traefik.http.routers.searchtools.tls=true"
+      - "traefik.http.routers.searchtools.tls.certresolver=myresolver"
+    networks:
+      - "apps-net"
+
+networks:
+  apps-net:
+    external: true
