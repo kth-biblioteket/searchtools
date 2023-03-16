@@ -3,7 +3,7 @@ version: '3.6'
 services:
   searchtools:
     container_name: searchtools
-    image: ghcr.io/kth-biblioteket/kthb-meili-reactjs:main
+    image: ghcr.io/kth-biblioteket/searchtools:main
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
