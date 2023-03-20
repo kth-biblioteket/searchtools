@@ -3,11 +3,11 @@ version: '3.6'
 services:
   searchtools:
     container_name: searchtools
-    image: ghcr.io/kth-biblioteket/searchtools:main
+    image: ghcr.io/kth-biblioteket/searchtools:${REPO_TYPE}
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.searchtools.rule=Host(`search.sites.lib.kth.se`)"
+      - "traefik.http.routers.searchtools.rule=Host(`${DOMAIN_NAME}`)"
       - "traefik.http.routers.searchtools.entrypoints=websecure"
       - "traefik.http.routers.searchtools.tls=true"
       - "traefik.http.routers.searchtools.tls.certresolver=myresolver"

@@ -17,7 +17,7 @@ import {
   
 function Openalex() {
     const searchClient = instantMeiliSearch(
-      "https://ref.lib.kth.se/meili",
+      process.env.REACT_APP_MEILI_URL,
       JSON.parse(sessionStorage.getItem('meili')).apikeys.meili,
       {
         paginationTotalHits: 100,

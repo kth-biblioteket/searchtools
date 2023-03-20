@@ -1,5 +1,6 @@
 import { Button, Nav, Navbar, Form } from 'react-bootstrap';
 import { NavLink } from "react-router-dom";
+import logo from "../images/KTH_Logotyp.svg";
 
 function NavBar() {
     function logout() {
@@ -13,7 +14,7 @@ function NavBar() {
                 <Navbar.Brand as={NavLink} to="/">
                     <img
                         alt=""
-                        src="https://apps.lib.kth.se/polopoly/KTH_Logotyp.svg"
+                        src={logo}
                         width="75"
                         height="75"
                         className="d-inline-block align-top"

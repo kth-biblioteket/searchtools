@@ -7,7 +7,7 @@ import './Login.css';
 const Loader = () => <div>Loading...</div>;
 
 async function loginUser(credentials ){
-    return fetch('https://ref.lib.kth.se/ldap/api/v1/login', {
+    return fetch(`${process.env.REACT_APP_LDAPAPI_URL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ async function loginUser(credentials ){
 }
 
 async function getApikeys(token) {
-    return fetch('https://ref.lib.kth.se/ldap/api/v1/divamonkey', {
+    return fetch(`${process.env.REACT_APP_LDAPAPI_URL}/divamonkey`, {
         method: 'POST',
         headers: {
             'x-access-token': token
