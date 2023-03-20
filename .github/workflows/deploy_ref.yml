@@ -39,3 +39,17 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          
+  deploy:
+    needs: build-and-push-image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy docker container webhook
+        uses: distributhor/workflow-webhook@v2
+        env:
+          webhook_url: https://api-ref.lib.kth.se/webhooks/hook
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+          data: '{ "action": "deploy" }'
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
