@@ -14,6 +14,7 @@ import {
 
   import NavBar from "./navBar"
   import { Container } from 'react-bootstrap';
+  import { useState } from 'react';
   
 function Openalex() {
     const searchClient = instantMeiliSearch(
@@ -22,8 +23,49 @@ function Openalex() {
       {
         paginationTotalHits: 100,
         primaryKey: 'id',
+        attributesToHighlight: []
       }
     );
+    
+    const Authorships = ({ authorships }) => {
+      const [showMoreAuthors, setShowMore] = useState(false);
+    
+      const handleShowMoreClick = () => {
+        setShowMore(true);
+      };
+      const handleShowLessClick = () => {
+        setShowMore(false);
+      };
+    
+      return (
+        <ul>
+          <li>
+            <div>{authorships[0].author.display_name}</div>
+            {showMoreAuthors && (
+              <ul>
+                {authorships.slice(1).map((authorship, index) => (
+                  <li key={index}>
+                    <div>{authorship.author.display_name}</div>
+                    <ul>
+                      {authorship.institutions.map((institution, index) => (
+                        <li key={index}>{institution.display_name}</li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+          {!showMoreAuthors && authorships.length > 1 && (
+            <button onClick={handleShowMoreClick}>Show more authors</button>
+          )}
+          {showMoreAuthors && (
+            <button onClick={handleShowLessClick}>Show less authors</button>
+          )}
+        </ul>
+      );
+    };
+    
     return (
       <>
         <Container>
@@ -108,19 +150,8 @@ function Openalex() {
             <div>DOI:</div>
             <div><a target="_new" href={props.hit.doi} ><Highlight attribute="doi" hit={props.hit} /></a></div>
           </div>
-          <div className="hit-displayName field">
-              {props.hit.authorships.map((item, index) => (
-                <div key={index}>
-                  <h2>{item.author.display_name}</h2>
-                  <p>Author Position: {item.author_position}</p>
-                  <p>Raw Affiliation: {item.raw_affiliation_string}</p>
-                  <ul>
-                    {item.institutions.map((institution, index) => (
-                      <li key={index}>{institution.display_name}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+          <div className="hit-displayName">
+            <Authorships authorships={props.hit.authorships} />
           </div>
           <div className="hit-title field">
             <div>Publiceringsdatum:</div>
