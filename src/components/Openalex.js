@@ -46,12 +46,6 @@ function Openalex() {
                     limit={10}
                     showMore />
   
-                  <h2>Author</h2>
-                  <RefinementList
-                    attribute="author"
-                    limit={10}
-                    showMore />
-  
                   <h2>Publiceringsdatum</h2>
                   <RefinementList
                     attribute="publication_date"
@@ -115,14 +109,18 @@ function Openalex() {
             <div><a target="_new" href={props.hit.doi} ><Highlight attribute="doi" hit={props.hit} /></a></div>
           </div>
           <div className="hit-displayName field">
-            <div>Authorships:</div>
-            <div>
-              <ul>
-                {props.hit.authorships.map(item => (
-                  <li key={item.author.id}>{item.author.display_name}</li>
-                ))}
-              </ul>
-            </div>
+              {props.hit.authorships.map((item, index) => (
+                <div key={index}>
+                  <h2>{item.author.display_name}</h2>
+                  <p>Author Position: {item.author_position}</p>
+                  <p>Raw Affiliation: {item.raw_affiliation_string}</p>
+                  <ul>
+                    {item.institutions.map((institution, index) => (
+                      <li key={index}>{institution.display_name}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
           </div>
           <div className="hit-title field">
             <div>Publiceringsdatum:</div>
