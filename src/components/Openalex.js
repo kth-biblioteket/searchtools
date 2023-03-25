@@ -29,7 +29,7 @@ function Openalex() {
         <Container>
           <main>
             <NavBar />
-            <div className="header"><h4>KTH Användare(UG)</h4></div>
+            <div className="header"><h4>Openalex</h4></div>
             <div className="ais-InstantSearch">
               <InstantSearch indexName="openalex" searchClient={searchClient}>
                 <div className="left-panel">
@@ -46,7 +46,7 @@ function Openalex() {
                     limit={10}
                     showMore />
   
-                  <h2>Auhtor</h2>
+                  <h2>Author</h2>
                   <RefinementList
                     attribute="author"
                     limit={10}
@@ -108,31 +108,23 @@ function Openalex() {
           </div>
           <div className="hit-displayName field">
             <div>Work Openalex Id:</div>
-            <div><a target="_new" href={props.hit.work_id} ><Highlight attribute="work_id" hit={props.hit} /></a></div>
+            <div><a target="_new" href={props.hit.id} ><Highlight attribute="id" hit={props.hit} /></a></div>
           </div>
           <div className="hit-sn field">
             <div>DOI:</div>
             <div><a target="_new" href={props.hit.doi} ><Highlight attribute="doi" hit={props.hit} /></a></div>
           </div>
           <div className="hit-displayName field">
-            <div>Author:</div>
-            <div><Highlight attribute="author" hit={props.hit} /></div>
-          </div>
-          <div className="hit-displayName field">
-            <div>Author Openalex Id:</div>
-            <div><a target="_new" href={props.hit.author_openalexid} ><Highlight attribute="author_openalexid" hit={props.hit} /></a></div>
+            <div>Authorships:</div>
+            <div><Highlight attribute="authorships" hit={props.hit} /></div>
           </div>
           <div className="hit-title field">
             <div>Publiceringsdatum:</div>
             <div>{props.hit.publication_date}</div>
           </div>
-          <div className="hit-ugPrimaryAffiliation field">
-            <div>Institution:</div>
-            <div>{props.hit.institution}</div>
-          </div>
           <div className="hit-mail field">
             <div>Utgivare:</div>
-            <div>{props.hit.publisher}</div>
+            <div>{props.hit.host_venue.publisher}</div>
           </div>
         </div>
       );
