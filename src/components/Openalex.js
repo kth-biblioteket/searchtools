@@ -112,7 +112,7 @@ function Openalex() {
               <div>{props.hit.authorships[0].author.display_name}</div>
               {showMore && (
                 <ul>
-                  {hit.authorships.slice(1).map((authorship, index) => (
+                  {props.hit.authorships.slice(1).map((authorship, index) => (
                     <li key={index}>
                       <div>{authorship.author.display_name}</div>
                       <ul>
