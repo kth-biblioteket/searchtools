@@ -116,7 +116,13 @@ function Openalex() {
           </div>
           <div className="hit-displayName field">
             <div>Authorships:</div>
-            <div><Highlight attribute="authorships" hit={props.hit} /></div>
+            <div>
+              <ul>
+                {props.hit.authorships.map(item => (
+                  <li key={item.author.id}>{item.author.display_name}</li>
+                ))}
+              </ul>
+            </div>
           </div>
           <div className="hit-title field">
             <div>Publiceringsdatum:</div>
