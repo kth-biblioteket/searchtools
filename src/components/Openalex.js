@@ -150,8 +150,9 @@ function Openalex() {
             <div>DOI:</div>
             <div><a target="_new" href={props.hit.doi} >{props.hit.doi}</a></div>
           </div>
-          <div className="hit-displayName">
-            <Authorships authorships={props.hit.authorships} />
+          <div className="hit-displayName field">
+            <div>Authors</div>
+            <div><Authorships authorships={props.hit.authorships} /></div>
           </div>
           <div className="hit-title field">
             <div>Publiceringsdatum:</div>
