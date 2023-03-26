@@ -144,11 +144,11 @@ function Openalex() {
           </div>
           <div className="hit-displayName field">
             <div>Work Openalex Id:</div>
-            <div><a target="_new" href={props.hit.id} ><Highlight attribute="id" hit={props.hit} /></a></div>
+            <div><a target="_new" href={props.hit.id} >{props.hit.id}</a></div>
           </div>
           <div className="hit-sn field">
             <div>DOI:</div>
-            <div><a target="_new" href={props.hit.doi} ><Highlight attribute="doi" hit={props.hit} /></a></div>
+            <div><a target="_new" href={props.hit.doi} >{props.hit.doi}</a></div>
           </div>
           <div className="hit-displayName">
             <Authorships authorships={props.hit.authorships} />
