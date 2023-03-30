@@ -41,6 +41,9 @@ function Openalex() {
         <ul>
           <li>
             <div>{authorships[0].author.display_name}</div>
+            <div>{authorships[0].institutions.map((institution, index) => (
+                        <div key={index}>{institution.display_name}</div>
+                      ))}</div>
             {showMoreAuthors && (
               <ul>
                 {authorships.slice(1).map((authorship, index) => (
@@ -76,32 +79,29 @@ function Openalex() {
               <InstantSearch indexName="openalex" searchClient={searchClient}>
                 <div className="left-panel">
                   <ClearRefinements />
-                  <h2>Title</h2>
+                  <h2>Type</h2>
                   <RefinementList
-                    attribute="title"
+                    attribute="type"
                     limit={10}
                     showMore />
-  
-                  <h2>DOI</h2>
+                  <h2>Authors</h2>
                   <RefinementList
-                    attribute="doi"
-                    limit={10}
-                    showMore />
-  
-                  <h2>Publiceringsdatum</h2>
-                  <RefinementList
-                    attribute="publication_date"
-                    limit={10}
-                    showMore />
-
-                  <h2>Institution</h2>
-                  <RefinementList
-                    attribute="institution"
+                    attribute="authorships.author.display_name"
                     limit={10}
                     showMore />
                   <h2>Utgivare</h2>
                   <RefinementList
-                    attribute="publisher"
+                    attribute="host_venue.display_name"
+                    limit={10}
+                    showMore />
+                  <h2>Publisher</h2>
+                  <RefinementList
+                    attribute="host_venue.publisher"
+                    limit={10}
+                    showMore />
+                  <h2>Is oa</h2>
+                  <RefinementList
+                    attribute="open_access.is_oa"
                     limit={10}
                     showMore />
   

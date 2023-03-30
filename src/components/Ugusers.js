@@ -40,11 +40,7 @@ function Ugusers() {
                     limit={10}
                     showMore />
   
-                  <h2>Efternamn</h2>
-                  <RefinementList
-                    attribute="sn"
-                    limit={10}
-                    showMore />
+                 
   
                   <h2>Grupp</h2>
                   <RefinementList
