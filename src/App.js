@@ -38,7 +38,7 @@ function Home() {
       <Container>
         <main>
           <NavBar />
-          <div className="header"><h4>Sökning i divers olika index på KTH</h4></div>
+          <div className="header"><h4>Sökning i diverse olika index på KTH</h4></div>
           <p>
             Välj ett index och börja söka
           </p>
