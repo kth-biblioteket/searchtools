@@ -46,9 +46,9 @@ function Kthemployees() {
                     limit={10}
                     showMore />
   
-                  <h2>Namn</h2>
+                  <h2>Befattning</h2>
                   <RefinementList
-                    attribute="Namn"
+                    attribute="Befattning"
                     limit={10}
                     showMore />
                   <Configure hitsPerPage={10} />
