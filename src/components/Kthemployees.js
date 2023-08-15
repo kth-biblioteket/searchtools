@@ -42,13 +42,13 @@ function Kthemployees() {
   
                   <h2>Skola/avd</h2>
                   <RefinementList
-                    attribute="Bef_ben"
+                    attribute="Skola"
                     limit={10}
                     showMore />
   
-                  <h2>Efternamn</h2>
+                  <h2>Namn</h2>
                   <RefinementList
-                    attribute="Enamn"
+                    attribute="Namn"
                     limit={10}
                     showMore />
                   <Configure hitsPerPage={10} />
@@ -68,13 +68,9 @@ function Kthemployees() {
     function Hit(props) {
       return (
         <div>
-          <div className="hit-Fnamn field">
-            <div>Förnamn:</div>
-            <div>{props.hit.Fnamn}</div>
-          </div>
           <div className="hit-Enamn field">
-            <div>Efternamn:</div>
-            <div><Highlight attribute="Enamn" hit={props.hit} /></div>
+            <div>Namn:</div>
+            <div><Highlight attribute="Namn" hit={props.hit} /></div>
           </div>
           <div className="hit-KTH_id field">
             <div>KTH-id:</div>
@@ -86,7 +82,7 @@ function Kthemployees() {
           </div>
           <div className="hit-Bef_ben field">
             <div>Skola/avd:</div>
-            <div>{props.hit.Bef_ben}</div>
+            <div>{props.hit.Skola}</div>
           </div>
           <div className="hit-ORCIDid field">
             <div>ORCID:</div>
@@ -94,15 +90,15 @@ function Kthemployees() {
           </div>
           <div className="hit-Anst_nuv_bef field">
             <div>Befattning nuvarande:</div>
-            <div>{props.hit.Anst_nuv_bef}</div>
+            <div>{props.hit.Befattning}</div>
           </div>
           <div className="hit-Bef_t_o_m field">
             <div>Befattning t.o.m:</div>
-            <div>{props.hit.Bef_t_o_m}</div>
+            <div>{props.hit.Till}</div>
           </div>
           <div className="hit-Fil_datum field">
             <div>Uppdaterad:</div>
-            <div>{props.hit.Fil_datum}</div>
+            <div>{props.hit.Datum}</div>
           </div>
   
         </div>
