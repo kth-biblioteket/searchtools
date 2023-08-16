@@ -1,15 +1,18 @@
 FROM node:16.13.2 as build-stage
 #FROM node:16.13.2
 
-WORKDIR /app
-
-COPY . /app
-
 # Specify the environment variable to determine the environment
 ARG REACT_APP_ENV_FILE
 
 # Copy the appropriate environment file
 COPY $REACT_APP_ENV_FILE .env
+
+# Echo the value of the environment variable to the container's output
+RUN echo "REACT_APP_ENV_FILE value is: $REACT_APP_ENV_FILE"
+
+WORKDIR /app
+
+COPY . /app
 
 RUN npm install
 
