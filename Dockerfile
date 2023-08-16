@@ -3,9 +3,9 @@ FROM node:16.13.2
 
 WORKDIR /app
 
-#COPY . /app
+COPY . /app
 
-# RUN npm install
+RUN npm install
 
 #RUN npm run build
 
@@ -17,19 +17,10 @@ EXPOSE 80
 
 # CMD ["nginx", "-g", "daemon off;"]
 
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
-
-# Install app dependencies
-RUN npm install
-
-# Copy the rest of the application code
-COPY . .
-
 # Specify the environment variable to determine the environment
 ARG REACT_APP_ENV_FILE
 
 # Copy the appropriate environment file
-COPY $REACT_APP_ENV_FILE .env
+COPY $REACT_APP_ENV_FILE /app/.env
 
 CMD ["npm", "start"]
