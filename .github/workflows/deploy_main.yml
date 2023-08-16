@@ -32,6 +32,12 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      - name: Display Environment Variable
+        env:
+          REACT_APP_ENV_FILE: .env.main
+        run: |
+          echo "REACT_APP_ENV_FILE value: $REACT_APP_ENV_FILE"
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
@@ -41,8 +47,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
         env: 
           REACT_APP_ENV_FILE: .env.main
-        run: |
-          echo "REACT_APP_ENV_FILE value: $REACT_APP_ENV_FILE"
           
   deploy:
     needs: build-and-push-image
