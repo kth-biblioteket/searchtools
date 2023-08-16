@@ -9,7 +9,7 @@ COPY . /app
 ARG REACT_APP_ENV_FILE
 
 # Copy the appropriate environment file
-COPY $REACT_APP_ENV_FILE /app/.env
+COPY $REACT_APP_ENV_FILE .env
 
 RUN npm install
 
