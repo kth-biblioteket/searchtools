@@ -39,8 +39,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          env: 
-            REACT_APP_ENV_FILE: .env.main
+        env: 
+          REACT_APP_ENV_FILE: .env.main
           
   deploy:
     needs: build-and-push-image
