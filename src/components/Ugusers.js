@@ -1,4 +1,6 @@
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 import {
     InstantSearch,
@@ -16,6 +18,8 @@ import {
   import { Container } from 'react-bootstrap';
   
 function Ugusers() {
+    const [apiResponse, setApiResponse] = useState({});
+
     const searchClient = instantMeiliSearch(
       process.env.REACT_APP_MEILI_URL,
       JSON.parse(sessionStorage.getItem('meili')).apikeys.meili,
@@ -34,13 +38,12 @@ function Ugusers() {
               <InstantSearch indexName="ugusers" searchClient={searchClient}>
                 <div className="left-panel">
                   <ClearRefinements />
+
                   <h2>Title</h2>
                   <RefinementList
                     attribute="title"
                     limit={10}
                     showMore />
-  
-                 
   
                   <h2>Grupp</h2>
                   <RefinementList
@@ -58,7 +61,6 @@ function Ugusers() {
                 <div className="right-panel">
                   <SearchBox showLoadingIndicator/>
                   <InfiniteHits hitComponent={Hit} />
-  
                 </div>
                 <Configure hitsPerPage={10} />
               </InstantSearch>
@@ -100,6 +102,9 @@ function Ugusers() {
           <div className="hit-ugKthid field">
             <div>KTH-id:</div>
             <div>{props.hit.ugKthid}</div>
+            <div className="hit-actions">
+              <button onClick={() => fetchProfileData(props.hit.ugKthid)}>Fetch Profile</button>
+          </div>
           </div>
           <div className="hit-title field">
             <div>Titel:</div>
@@ -124,7 +129,17 @@ function Ugusers() {
         </div>
       );
     }
-  }
 
+    async function fetchProfileData(ugKthid) {
+      try {
+        const apiKey = 'YOUR_API_KEY'; // Replace with your actual API key
+        const headers = { 'api_key': JSON.parse(sessionStorage.getItem('meili')).apikeys.kthprofiles };
+        const response = await axios.get(`https://api.kth.se/api/profile/v1/kthid/${ugKthid}`);
+        setApiResponse(response.data);
+      } catch (error) {
+        console.error('Error fetching profile data:', error);
+      }
+    }
+}
 
-  export default Ugusers;
+export default Ugusers;
