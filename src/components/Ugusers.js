@@ -121,11 +121,14 @@ function Ugusers() {
             <div>Grupp:</div>
             <div>{props.hit.kthPAGroupMembership}</div>
           </div>
-          <div className="hit-actions">
               {props.hit.mail && props.hit.ugPrimaryAffiliation == "staff" && (
-                <a target = "_new" href={"https://www.kth.se/profile/" + props.hit.mail.replace("@kth.se","")}>Profile</a>
+                <div className="hit-actions field">
+                  <div>Profile:</div>
+                  <div>
+                    <a target = "_new" href={"https://www.kth.se/profile/" + props.hit.mail.replace("@kth.se","")}>{"https://www.kth.se/profile/" + props.hit.mail.replace("@kth.se","")}</a>
+                  </div>
+                </div>
               )}
-          </div>
         </div>
       );
     }
