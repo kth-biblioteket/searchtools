@@ -35,7 +35,8 @@
         <Route path="xxxx/ugusers" element={<Ugusers />} />
     </Routes>
 
-## Copy till search.lib.kth.se från git bash
-scp -P 8967 -r ../build/* kthb@lib.kth.se:/var/www/search.lib.kth.se/html
+## Deploy
+    build-args: |
+            REACT_APP_ENV_FILE=.env.ref
 
 
