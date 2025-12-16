@@ -129,6 +129,10 @@ function Ugusers() {
                   </div>
                 </div>
               )}
+          <div className="hit-whenChanged field">
+            <div>Uppdaterad:</div>
+            <div>{props.hit.whenChanged}</div>
+          </div>
         </div>
       );
     }
