@@ -17,6 +17,34 @@ import {
   import NavBar from "./navBar"
   import { Container } from 'react-bootstrap';
   
+// Hjälpfunktion för att formatera datumsträngen YYYYMMDDHHMMSS.fZ
+const formatMeiliDate = (dateString) => {
+    if (!dateString) return "Okänt datum";
+
+    // Formatera om strängen till YYYY-MM-DDTHH:MM:SS.fZ för att Date-objektet ska tolka den korrekt som UTC
+    const formattedString = 
+        dateString.substring(0, 4) + '-' + 
+        dateString.substring(4, 6) + '-' + 
+        dateString.substring(6, 8) + 'T' + 
+        dateString.substring(8, 10) + ':' + 
+        dateString.substring(10, 12) + ':' + 
+        dateString.substring(12, 17); // Inkluderar sekunder, bråkdel och Z
+
+    const date = new Date(formattedString);
+
+    // Använd Intl.DateTimeFormat för en läsbar, lokaliserad sträng
+    // Vi formaterar den till svenskt format här för tydlighetens skull
+    const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit' 
+    };
+    return new Intl.DateTimeFormat('sv-SE', options).format(date);
+};
+
 function Ugusers() {
     const searchClient = instantMeiliSearch(
       process.env.REACT_APP_MEILI_URL,
@@ -131,7 +159,7 @@ function Ugusers() {
               )}
           <div className="hit-whenChanged field">
             <div>Uppdaterad:</div>
-            <div>{props.hit.whenChanged}</div>
+            <div>{formatMeiliDate(props.hit.whenChanged)}</div>
           </div>
         </div>
       );
