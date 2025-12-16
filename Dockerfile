@@ -1,4 +1,4 @@
-FROM node:16.13.2-bookworm as build-stage
+FROM node:16.13.2-bullseye as build-stage
 
 ARG REACT_APP_ENV_FILE=.env.main
 
