@@ -1,4 +1,4 @@
-FROM node:16.13.2 as build-stage
+FROM node:16.13.2-bookworm as build-stage
 
 ARG REACT_APP_ENV_FILE=.env.main
 
@@ -14,7 +14,8 @@ RUN npm install
 
 RUN npm run build
 
-RUN apt-get update && apt-get install -y nginx
+RUN apt-get update && \
+    apt-get install -y nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
