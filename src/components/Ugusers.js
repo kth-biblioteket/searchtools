@@ -58,7 +58,7 @@ function Ugusers() {
                     `${process.env.REACT_APP_MEILI_URL}/indexes/ugusers`,
                     {
                         headers: {
-                            Authorization: `Bearer ${meiliConfig.apikeys.meili}`,
+                            Authorization: `Bearer ${meiliConfig.apikeys.meilimetadata}`,
                         },
                     }
                 );
