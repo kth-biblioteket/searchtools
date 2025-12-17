@@ -46,6 +46,30 @@ const formatMeiliDate = (dateString) => {
 };
 
 function Ugusers() {
+
+  const [indexStats, setIndexStats] = useState(null);
+    const meiliConfig = JSON.parse(sessionStorage.getItem('meili'));
+
+    // Hämta metadata för indexet
+    React.useEffect(() => {
+        const fetchStats = async () => {
+            try {
+                const response = await axios.get(
+                    `${process.env.REACT_APP_MEILI_URL}/indexes/ugusers`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${meiliConfig.apikeys.meili}`,
+                        },
+                    }
+                );
+                setIndexStats(response.data);
+            } catch (error) {
+                console.error("Kunde inte hämta index-stats", error);
+            }
+        };
+        fetchStats();
+    }, [meiliConfig.apikeys.meili]);
+
     const searchClient = instantMeiliSearch(
       process.env.REACT_APP_MEILI_URL,
       JSON.parse(sessionStorage.getItem('meili')).apikeys.meili,
@@ -59,7 +83,13 @@ function Ugusers() {
         <Container>
           <main>
             <NavBar />
-            <div className="header"><h4>KTH Användare(UG)</h4></div>
+            <div className="header"><h4>KTH Användare(UG)</h4>
+            {indexStats && (
+                <p style={{ fontSize: '0.8rem', color: '#666' }}>
+                    Index senast synkroniserat: {new Date(indexStats.updatedAt).toLocaleString('sv-SE')}
+                </p>
+            )}
+            </div>
             <div className="ais-InstantSearch">
               <InstantSearch indexName="ugusers" searchClient={searchClient}>
                 <div className="left-panel">
